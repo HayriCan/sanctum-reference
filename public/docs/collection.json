@@ -1,0 +1,153 @@
+{
+    "variable": [
+        {
+            "id": "baseUrl",
+            "key": "baseUrl",
+            "type": "string",
+            "name": "string",
+            "value": "local.scoutium.com"
+        }
+    ],
+    "info": {
+        "name": "Scoutium",
+        "_postman_id": "9d4988ba-6e03-4ea7-be46-48d08c2fb59d",
+        "description": "",
+        "schema": "https:\/\/schema.getpostman.com\/json\/collection\/v2.1.0\/collection.json"
+    },
+    "item": [
+        {
+            "name": "Authentication",
+            "description": "\nAPI endpoints for managing authentication",
+            "item": [
+                {
+                    "name": "Register Endpoint.",
+                    "request": {
+                        "url": {
+                            "protocol": "http",
+                            "host": "{{baseUrl}}",
+                            "path": "api\/auth\/register",
+                            "query": [],
+                            "raw": "http:\/\/{{baseUrl}}\/api\/auth\/register"
+                        },
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\"name\":\"John Doe\",\"email\":\"johndoe@example.com\",\"password\":\"secret\",\"ref_code\":\"S60F2EC85AFAEF\",\"password_confirmation\":\"secret\"}"
+                        },
+                        "description": "",
+                        "auth": {
+                            "type": "noauth"
+                        }
+                    },
+                    "response": [
+                        {
+                            "header": [],
+                            "code": 201,
+                            "body": "{\"error\":false,\"message\":\"User Created\",\"data\":{\"token\":\"19|gyNm065OjWn48CCkSGQpM4KGmR9NLaSRWr9uXUlC\",\"user\":{\"name\":\"John Doe\",\"email\":\"johndoe@example.com\",\"created_at\":\"2021-07-17 15:49:05\"},\"wallet\":{\"amount\":0,\"currency\":\"TRY\"}}}",
+                            "name": "201"
+                        },
+                        {
+                            "header": [],
+                            "code": 400,
+                            "body": "{\"error\":true,\"message\":\"Reference number not found\",\"data\":null}",
+                            "name": "400"
+                        },
+                        {
+                            "header": [],
+                            "code": 422,
+                            "body": "{\"error\":true,\"message\":\"StoreUserRequest validation failed\",\"data\":{\"email\":[\"The email has already been taken.\"]}}",
+                            "name": "422"
+                        }
+                    ]
+                },
+                {
+                    "name": "Login Endpoint.",
+                    "request": {
+                        "url": {
+                            "protocol": "http",
+                            "host": "{{baseUrl}}",
+                            "path": "api\/auth\/login",
+                            "query": [],
+                            "raw": "http:\/\/{{baseUrl}}\/api\/auth\/login"
+                        },
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\"email\":\"johndoe@example.com\",\"password\":\"secret\"}"
+                        },
+                        "description": "",
+                        "auth": {
+                            "type": "noauth"
+                        }
+                    },
+                    "response": [
+                        {
+                            "header": [],
+                            "code": 200,
+                            "body": "{\"error\": false,\"message\": \"User logged in\",\"data\": {\"token\": \"17|v2G5z7HrbrY1aLmvZnOxBO7pUl1K9KnTUvBpb79f\"}}",
+                            "name": "200"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "Endpoints",
+            "description": "",
+            "item": [
+                {
+                    "name": "Handle the incoming request.",
+                    "request": {
+                        "url": {
+                            "protocol": "http",
+                            "host": "{{baseUrl}}",
+                            "path": "api\/send-invitation",
+                            "query": [],
+                            "raw": "http:\/\/{{baseUrl}}\/api\/send-invitation"
+                        },
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\"email\":\"beaulah23@example.org\"}"
+                        },
+                        "description": ""
+                    },
+                    "response": []
+                }
+            ]
+        }
+    ],
+    "auth": {
+        "type": "bearer"
+    }
+}
