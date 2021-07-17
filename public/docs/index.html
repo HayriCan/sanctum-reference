@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    <title>Scoutium Documentation</title>
+    <title>Reference Documentation</title>
 
     <link href="https://fonts.googleapis.com/css?family=PT+Sans&display=swap" rel="stylesheet">
 
@@ -19,7 +19,7 @@
 
     <script src="//cdn.jsdelivr.net/npm/lodash@4.17.10/lodash.min.js"></script>
     <script>
-        var baseUrl = "http://local.scoutium.com";
+        var baseUrl = "http://local.reference.com";
     </script>
     <script src="../docs/js/tryitout-3.6.2.js"></script>
 
@@ -63,10 +63,10 @@ You can switch the language used with the tabs at the top right (or from the nav
 <blockquote>
 <p>Base URL</p>
 </blockquote>
-<pre><code class="language-yaml">http://local.scoutium.com</code></pre>
+<pre><code class="language-yaml">http://local.reference.com</code></pre>
 
         <h1>Authenticating requests</h1>
-<p>To authenticate requests, include an <strong><code>Authorization</code></strong> header with the value <strong><code>"Bearer {YOUR_AUTH_KEY}"</code></strong>.</p>
+<p>Authenticate requests to this API's endpoints by sending an <strong><code>Authorization</code></strong> header with the value <strong><code>"Bearer {YOUR_AUTH_KEY}"</code></strong>.</p>
 <p>All authenticated endpoints are marked with a <code>requires authentication</code> badge in the documentation below.</p>
 
         <h1 id="authentication">Authentication</h1>
@@ -85,7 +85,7 @@ You can switch the language used with the tabs at the top right (or from the nav
 
 
 <pre><code class="language-bash">curl --request POST \
-    "http://local.scoutium.com/api/auth/register" \
+    "http://local.reference.com/api/auth/register" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
     --data "{
@@ -98,7 +98,7 @@ You can switch the language used with the tabs at the top right (or from the nav
 </code></pre>
 
 <pre><code class="language-javascript">const url = new URL(
-    "http://local.scoutium.com/api/auth/register"
+    "http://local.reference.com/api/auth/register"
 );
 
 const headers = {
@@ -122,7 +122,7 @@ fetch(url, {
 
 <pre><code class="language-php">$client = new \GuzzleHttp\Client();
 $response = $client-&gt;post(
-    'http://local.scoutium.com/api/auth/register',
+    'http://local.reference.com/api/auth/register',
     [
         'headers' =&gt; [
             'Accept' =&gt; 'application/json',
@@ -285,7 +285,7 @@ print_r(json_decode((string) $body));</code></pre>
 
 
 <pre><code class="language-bash">curl --request POST \
-    "http://local.scoutium.com/api/auth/login" \
+    "http://local.reference.com/api/auth/login" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
     --data "{
@@ -295,7 +295,7 @@ print_r(json_decode((string) $body));</code></pre>
 </code></pre>
 
 <pre><code class="language-javascript">const url = new URL(
-    "http://local.scoutium.com/api/auth/login"
+    "http://local.reference.com/api/auth/login"
 );
 
 const headers = {
@@ -316,7 +316,7 @@ fetch(url, {
 
 <pre><code class="language-php">$client = new \GuzzleHttp\Client();
 $response = $client-&gt;post(
-    'http://local.scoutium.com/api/auth/login',
+    'http://local.reference.com/api/auth/login',
     [
         'headers' =&gt; [
             'Accept' =&gt; 'application/json',
@@ -448,7 +448,7 @@ print_r(json_decode((string) $body));</code></pre>
 
 
 <pre><code class="language-bash">curl --request POST \
-    "http://local.scoutium.com/api/send-invitation" \
+    "http://local.reference.com/api/send-invitation" \
     --header "Authorization: Bearer {YOUR_AUTH_KEY}" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
@@ -458,7 +458,7 @@ print_r(json_decode((string) $body));</code></pre>
 </code></pre>
 
 <pre><code class="language-javascript">const url = new URL(
-    "http://local.scoutium.com/api/send-invitation"
+    "http://local.reference.com/api/send-invitation"
 );
 
 const headers = {
@@ -479,7 +479,7 @@ fetch(url, {
 
 <pre><code class="language-php">$client = new \GuzzleHttp\Client();
 $response = $client-&gt;post(
-    'http://local.scoutium.com/api/send-invitation',
+    'http://local.reference.com/api/send-invitation',
     [
         'headers' =&gt; [
             'Authorization' =&gt; 'Bearer {YOUR_AUTH_KEY}',
