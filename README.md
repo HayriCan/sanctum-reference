@@ -112,7 +112,7 @@ Switch to the repo folder and create sqlite file in the database folder
 
     touch database/test.sqlite
 
-After creating Sqlite database folder you can run 
+After creating Sqlite database file you can run 
 
     composer test
 
