@@ -1,63 +1,141 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400"></a></p>
+# Laravel Sanctum Reference App
 
-<p align="center">
-<a href="https://travis-ci.org/laravel/framework"><img src="https://travis-ci.org/laravel/framework.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+[![GitHub issues](https://img.shields.io/github/issues/HayriCan/sanctum-reference)](https://github.com/HayriCan/sanctum-reference/issues) [![GitHub license](https://img.shields.io/github/license/HayriCan/sanctum-reference)](https://github.com/HayriCan/sanctum-reference/blob/main/LICENSE)
 
-## About Laravel
+----------
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+# Getting started
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+## Installation
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+Please check the official laravel installation guide for server requirements before you start. [Official Documentation](https://laravel.com/docs/8.x/installation)
 
-## Learning Laravel
+Clone the repository
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+    git clone git@github.com:HayriCan/sanctum-reference.git
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 1500 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+Switch to the repo folder
 
-## Laravel Sponsors
+    cd sanctum-reference
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell).
+Install all the dependencies using composer
 
-### Premium Partners
+    composer install
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Cubet Techno Labs](https://cubettech.com)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[Many](https://www.many.co.uk)**
-- **[Webdock, Fast VPS Hosting](https://www.webdock.io/en)**
-- **[DevSquad](https://devsquad.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[OP.GG](https://op.gg)**
+Copy the example env file and make the required configuration changes in the .env file
 
-## Contributing
+    cp .env.example .env
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+Generate a new application key
 
-## Code of Conduct
+    php artisan key:generate
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+Run the database migrations (**Set the database connection in .env before migrating**)
 
-## Security Vulnerabilities
+    php artisan migrate
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+Start the local development server
+
+    php artisan serve
+
+You can now access the server at http://localhost:8000
+
+**TL;DR command list**
+
+    git clone git@github.com:HayriCan/sanctum-reference.git
+    cd sanctum-reference
+    composer install
+    cp .env.example .env
+    php artisan key:generate
+
+**Make sure you set the correct database connection information before running the migrations** [Environment variables](#environment-variables)
+
+    php artisan migrate
+    php artisan serve
+
+# Code overview
+
+## Dependencies
+
+- [Laravel Sanctum](https://github.com/laravel/sanctum) - Laravel Sanctum provides a featherweight authentication system for SPAs and simple APIs.
+- [Scribe](https://github.com/knuckleswtf/scribe) - Scribe helps you generate API documentation for humans from your Laravel
+
+## Folders
+
+- `app/Exceptions` - Contains all the exception classes
+- `app/Http/Controllers` - Contains all the api controllers
+- `app/Http/Requests` - Contains all the api form requests
+- `app/Http/Resources` - Contains all the api json resources
+- `app/Jobs` - Contains all the queueable jobs
+- `app/Mail` - Contains all the mailable classes
+- `app/Models` - Contains all Eloquent models
+- `app/Repository` - Contains all Repository classes and Interfaces
+- `app/Repository/Eloquent` - Contains all repository classes for Eloquent
+- `app/Traits` - Contains all traits
+- `config` - Contains all the application configuration files
+- `database/migrations` - Contains all the database migrations
+- `public/docs` - Contains api documentation which created by [Scribe](https://github.com/knuckleswtf/scribe)
+- `routes` - Contains all the api routes defined in api.php file
+- `tests` - Contains all the application tests
+- `tests/Feature` - Contains all the api tests
+
+## Environment variables
+
+- `.env` - Environment variables can be set in this file
+
+***Note*** : You can quickly set the database information, mailing credentials and other variables in this file and have the application fully working.
+
+----------
+
+# Testing API
+
+Run the laravel development server
+
+    php artisan serve
+
+The api can now be accessed at
+
+    http://localhost:8000/api
+
+Request headers
+
+| **Required** 	| **Key**              	| **Value**            	|
+|----------	|------------------	|------------------	|
+| Yes      	| Accept     	| application/json 	|
+| Yes      	| X-Requested-With 	| XMLHttpRequest   	|
+| Optional 	| Authorization    	| Bearer {TOKEN}      	|
+
+
+# Unit Test
+
+Switch to the repo folder and create sqlite file in the database folder
+
+    touch database/test.sqlite
+
+After creating Sqlite database folder you can run 
+
+    composer test
+
+With that command you can run feature tests which written for api end points
+
+# Documentation
+
+The pre arranged documantation file could be accessible from `http://localhost:8000/docs/index.html`.
+You can overwrite this documantation with your .env variables via this command
+    
+    php artisan scribe:generate
+
+## Author
+
+[Hayri Can BARÇIN]  
+Email: [Contact Me]
 
 ## License
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
-# sanctum-reference
+This project is licensed under the MIT License - see the [License File](LICENSE) for details
+
+[//]: # (These are reference links used in the body of this note and get stripped out when the markdown processor does its job. There is no need to format nicely because it shouldn't be seen. Thanks SO - http://stackoverflow.com/questions/4823468/store-comments-in-markdown-syntax)
+[Hayri Can BARÇIN]: <https://www.linkedin.com/in/hayricanbarcin/>
+[Contact Me]: <mailto:hayricanbarcin@gmail.com>
+
+
