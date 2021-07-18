@@ -50,7 +50,7 @@
                             <li><a href="http://github.com/knuckleswtf/scribe">Documentation powered by Scribe ✍</a></li>
                     </ul>
             <ul class="toc-footer" id="last-updated">
-            <li>Last updated: July 17 2021</li>
+            <li>Last updated: July 18 2021</li>
         </ul>
 </div>
 <div class="page-wrapper">
@@ -66,7 +66,7 @@ You can switch the language used with the tabs at the top right (or from the nav
 <pre><code class="language-yaml">http://local.reference.com</code></pre>
 
         <h1>Authenticating requests</h1>
-<p>Authenticate requests to this API's endpoints by sending an <strong><code>Authorization</code></strong> header with the value <strong><code>"Bearer {YOUR_AUTH_KEY}"</code></strong>.</p>
+<p>To authenticate requests, include an <strong><code>Authorization</code></strong> header with the value <strong><code>"Bearer {YOUR_AUTH_KEY}"</code></strong>.</p>
 <p>All authenticated endpoints are marked with a <code>requires authentication</code> badge in the documentation below.</p>
 
         <h1 id="authentication">Authentication</h1>
@@ -341,7 +341,16 @@ print_r(json_decode((string) $body));</code></pre>
     &quot;error&quot;: false,
     &quot;message&quot;: &quot;User logged in&quot;,
     &quot;data&quot;: {
-        &quot;token&quot;: &quot;17|v2G5z7HrbrY1aLmvZnOxBO7pUl1K9KnTUvBpb79f&quot;
+        &quot;token&quot;: &quot;19|gyNm065OjWn48CCkSGQpM4KGmR9NLaSRWr9uXUlC&quot;,
+        &quot;user&quot;: {
+            &quot;name&quot;: &quot;John Doe&quot;,
+            &quot;email&quot;: &quot;johndoe@example.com&quot;,
+            &quot;created_at&quot;: &quot;2021-07-17 15:49:05&quot;
+        },
+        &quot;wallet&quot;: {
+            &quot;amount&quot;: 0,
+            &quot;currency&quot;: &quot;TRY&quot;
+        }
     }
 }</code>
  </pre>
@@ -357,7 +366,7 @@ print_r(json_decode((string) $body));</code></pre>
 }</code>
  </pre>
             <blockquote>
-            <p>Example response (400):</p>
+            <p>Example response (422):</p>
         </blockquote>
                 <pre>
 

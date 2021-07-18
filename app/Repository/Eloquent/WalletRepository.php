@@ -56,7 +56,7 @@ class WalletRepository implements WalletRepositoryInterface
         }
     }
 
-    public function getWallet($user_id)
+    public function getWallet($user_id): array
     {
         try {
             return array('amount'=>$this->model->where('user_id',$user_id)->sum('amount'),'currency'=>config('wallet.rewardInvitee.currency'));

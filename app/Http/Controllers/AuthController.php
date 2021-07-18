@@ -53,9 +53,9 @@ class AuthController extends Controller
      * @bodyParam   email    string  required    The email of the  user.      Example: johndoe@example.com
      * @bodyParam   password    string  required    The password of the  user.   Example: secret
      *
-     * @response 200 {"error": false,"message": "User logged in","data": {"token": "17|v2G5z7HrbrY1aLmvZnOxBO7pUl1K9KnTUvBpb79f"}}
+     * @response 200 {"error":false,"message":"User logged in","data":{"token":"19|gyNm065OjWn48CCkSGQpM4KGmR9NLaSRWr9uXUlC","user":{"name":"John Doe","email":"johndoe@example.com","created_at":"2021-07-17 15:49:05"},"wallet":{"amount":0,"currency":"TRY"}}}
      * @response 400 {"error":true,"message":"Credentials not match","data":null}
-     * @response 400 {"error":true,"message":"StoreUserRequest validation failed","data":{"password":["The password field is required."]}}
+     * @response 422 {"error":true,"message":"StoreUserRequest validation failed","data":{"password":["The password field is required."]}}
      *
      */
     public function login(LoginUserRequest $request)

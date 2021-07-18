@@ -92,12 +92,20 @@ class UserRepository implements UserRepositoryInterface
         return $model->createToken('API Token')->plainTextToken;
     }
 
+    /**
+     * @throws CustomException
+     */
     public function loginUser(LoginUserRequest $request): JsonResponse
     {
-        if (!Auth::attempt($request->only(['email','password']))) {
+        $user = User::where('email',$request->email)->first();
+        if (is_null($user)){
+            throw new CustomException(null,'User not found', JsonResponse::HTTP_BAD_REQUEST);
+        }
+
+        if (!auth()->attempt($request->only(['email','password']))) {
             throw new CustomException(null,'Credentials not match', JsonResponse::HTTP_BAD_REQUEST);
         }
 
-        return $this->success(['token'=> $this->createAuthToken(Auth::user())],"User logged in",JsonResponse::HTTP_OK);
+        return $this->success(['token'=> $this->createAuthToken(Auth::user()),'user' => (new UserResource($user)),'wallet'=>$this->walletRepository->getWallet($user->id)],"User logged in",JsonResponse::HTTP_OK);
     }
 }
