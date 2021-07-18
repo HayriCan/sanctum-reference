@@ -20,7 +20,7 @@ class SendInvitation extends Mailable
      */
     public function __construct($m_code)
     {
-        $this->subject = 'Scoutium Katılım Davetiyesi';
+        $this->subject = config('app.name').' Katılım Davetiyesi';
         $this->code = $m_code;
     }
 

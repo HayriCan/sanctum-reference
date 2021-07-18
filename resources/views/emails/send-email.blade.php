@@ -1,7 +1,7 @@
 @component('mail::message')
 <h2>Sende Bize Katılmalısın!</h2>
 
-Scotium ailesine katılıp benimle beraber yükselmek için aşağıdaki <code>Davet Kodunu</code> kullanabilirsin.
+{{config('app.name')}} ailesine katılıp benimle beraber yükselmek için aşağıdaki <code>Davet Kodunu</code> kullanabilirsin.
 Bu sayede ikimizde kazanç sağlayabiliriz.
 
 <h3 style="margin-top: 30px">Davet Kodunuz:</h3>
